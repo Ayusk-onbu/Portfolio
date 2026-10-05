@@ -1,0 +1,1653 @@
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html lang = "ja">
+	<head>
+		<title>PORTFOLIO | 濱田 和哉</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* 作品カード用カスタムスタイル */
+			.work-card {
+				background: rgba(255, 255, 255, 0.05);
+				border: 1px solid rgba(255, 255, 255, 0.15);
+				border-radius: 8px;
+				padding: 1.5rem;
+				margin-bottom: 2rem;
+				transition: border-color 0.3s ease, transform 0.2s ease;
+				cursor: pointer;
+			}
+			.work-card:hover {
+				border-color: rgba(0, 162, 255, 0.8);
+				transform: translateY(-2px);
+			}
+			.work-tag {
+				display: inline-block;
+				background: rgba(0, 162, 255, 0.2);
+				color: #00c3ff;
+				border: 1px solid rgba(0, 162, 255, 0.4);
+				padding: 0.2rem 0.6rem;
+				border-radius: 4px;
+				font-size: 0.8rem;
+				margin-right: 0.4rem;
+				margin-bottom: 0.5rem;
+			}
+			.work-video-container {
+				border-radius: 6px;
+				overflow: hidden;
+				margin-bottom: 1rem;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				background: #000;
+			}
+			.work-video-container video {
+				width: 100%;
+				display: block;
+			}
+			/* 4枚画像ギャラリー用スタイル */
+			.image-gallery-4 {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1rem;
+				margin: 1.5rem 0;
+			}
+			.image-gallery-4 .gallery-item {
+				border-radius: 6px;
+				overflow: hidden;
+				border: 1px solid rgba(255, 255, 255, 0.15);
+				background: rgba(0, 0, 0, 0.3);
+			}
+			.image-gallery-4 img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+
+			/* RESUME用カスタムスタイル */
+			.resume-section {
+				margin-bottom: 2rem;
+			}
+			.resume-section h3 {
+				border-bottom: 2px solid rgba(0, 195, 255, 0.4);
+				padding-bottom: 0.4rem;
+				margin-bottom: 1rem;
+				color: #00c3ff;
+				font-size: 1.1rem;
+				letter-spacing: 0.1em;
+			}
+			.resume-timeline {
+				border-left: 2px solid rgba(0, 195, 255, 0.3);
+				padding-left: 1.2rem;
+				margin-left: 0.5rem;
+			}
+			.resume-item {
+				position: relative;
+				margin-bottom: 1.2rem;
+			}
+			.resume-item::before {
+				content: '';
+				position: absolute;
+				left: -1.55rem;
+				top: 0.35rem;
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: #00c3ff;
+				box-shadow: 0 0 8px #00c3ff;
+			}
+			.resume-date {
+				font-size: 0.8rem;
+				color: rgba(255, 255, 255, 0.6);
+				margin-bottom: 0.2rem;
+			}
+			.resume-title {
+				font-weight: bold;
+				font-size: 1rem;
+				color: #ffffff;
+			}
+			.skill-group {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 1rem;
+				margin-bottom: 1rem;
+			}
+			.skill-box {
+				background: rgba(255, 255, 255, 0.04);
+				border: 1px solid rgba(255, 255, 255, 0.12);
+				border-radius: 6px;
+				padding: 1rem;
+			}
+			.skill-box h4 {
+				font-size: 0.9rem;
+				color: #ffd700;
+				margin-bottom: 0.5rem;
+			}
+			.skill-box ul {
+				margin: 0;
+				padding-left: 1.2rem;
+				font-size: 0.85rem;
+			}
+
+			/* ページ間ダイレクトナビゲーション用スタイル */
+			.page-nav {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: 2rem;
+				padding-top: 1.5rem;
+				border-top: 1px solid rgba(255, 255, 255, 0.15);
+				gap: 0.5rem;
+			}
+			.page-nav .button {
+				padding: 0 1.2rem;
+				height: 2.75rem;
+				line-height: 2.75rem;
+				font-size: 0.85rem;
+				white-space: nowrap;
+			}
+
+			/* --- クイック「次へ」フローティングボタン --- */
+			.floating-next-btn {
+				position: fixed;
+				right: 20px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 52px;
+				height: 52px;
+				background: rgba(10, 25, 50, 0.4);
+				border: 1px solid rgba(0, 195, 255, 0.4);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: rgba(0, 225, 255, 0.7);
+				font-size: 1.3rem;
+				cursor: pointer;
+				z-index: 999;
+				backdrop-filter: blur(8px);
+				box-shadow: 0 0 10px rgba(0, 162, 255, 0.15);
+				transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			}
+			.floating-next-btn:hover {
+				background: rgba(0, 162, 255, 0.25);
+				border-color: #00c3ff;
+				color: #ffffff;
+				box-shadow: 0 0 20px rgba(0, 195, 255, 0.6);
+				transform: translateY(-50%) scale(1.12);
+			}
+			.floating-next-btn:active, .floating-next-btn.clicked {
+				transform: translateY(-50%) scale(0.92);
+				background: rgba(255, 215, 0, 0.4);
+				border-color: #ffd700;
+				color: #ffd700;
+				box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+			}
+
+			/* --- 右上 丸形MENUボタン & アニメーション --- */
+			.menu-toggle-btn {
+				position: fixed;
+				top: 20px;
+				right: 20px;
+				width: 64px;
+				height: 64px;
+				border-radius: 50%;
+				background: rgba(10, 22, 40, 0.85);
+				border: 2px solid rgba(0, 195, 255, 0.6);
+				box-shadow: 0 0 15px rgba(0, 195, 255, 0.3);
+				z-index: 1005; /* ドロワーより前面に配置して常に押しやすく */
+				cursor: pointer;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				backdrop-filter: blur(10px);
+				transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+				outline: none;
+				padding: 0;
+			}
+			.menu-toggle-btn:hover {
+				border-color: #ffd700;
+				box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+				transform: scale(1.08);
+			}
+
+			/* MENU文字の上の2本線 */
+			.menu-lines {
+				width: 22px;
+				height: 14px;
+				position: relative;
+				margin-bottom: 2px;
+			}
+			.menu-line {
+				position: absolute;
+				width: 100%;
+				height: 2px;
+				background-color: #00c3ff;
+				border-radius: 2px;
+				transition: transform 0.3s ease, top 0.3s ease, background-color 0.3s ease;
+			}
+			.menu-line-1 {
+				top: 2px;
+			}
+			.menu-line-2 {
+				top: 10px;
+			}
+
+			.menu-text-label {
+				font-size: 0.65rem;
+				font-weight: bold;
+				letter-spacing: 0.12em;
+				color: #ffffff;
+				line-height: 1;
+				transition: color 0.3s ease;
+			}
+
+			/* MENUが開いた時のアニメーション（2本線が×印に変形） */
+			.menu-toggle-btn.is-active {
+				border-color: #ff5555;
+				box-shadow: 0 0 20px rgba(255, 85, 85, 0.6);
+				background: rgba(30, 10, 20, 0.9);
+			}
+			.menu-toggle-btn.is-active .menu-line {
+				background-color: #ff5555;
+			}
+			.menu-toggle-btn.is-active .menu-line-1 {
+				top: 6px;
+				transform: rotate(45deg);
+			}
+			.menu-toggle-btn.is-active .menu-line-2 {
+				top: 6px;
+				transform: rotate(-45deg);
+			}
+			.menu-toggle-btn.is-active .menu-text-label {
+				color: #ff5555;
+			}
+
+			/* 目次スライドメニュー（ドロワー） */
+			.toc-drawer {
+				position: fixed;
+				top: 0;
+				right: -320px;
+				width: 300px;
+				height: 100vh;
+				background: rgba(10, 18, 32, 0.95);
+				border-left: 1px solid rgba(0, 195, 255, 0.3);
+				backdrop-filter: blur(15px);
+				z-index: 1002;
+				padding: 5rem 1.5rem 2.5rem 1.5rem;
+				box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+				transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+				overflow-y: auto;
+			}
+			.toc-drawer.open {
+				right: 0;
+			}
+			.toc-drawer-header {
+				padding-bottom: 1rem;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+				margin-bottom: 1.5rem;
+			}
+			.toc-drawer-header h3 {
+				margin: 0;
+				font-size: 1.1rem;
+				color: #00c3ff;
+				letter-spacing: 0.15em;
+			}
+			.toc-nav-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.toc-nav-list li {
+				margin-bottom: 0.8rem;
+			}
+			.toc-nav-list a {
+				display: block;
+				padding: 0.6rem 0.8rem;
+				color: rgba(255, 255, 255, 0.85);
+				text-decoration: none;
+				border-radius: 4px;
+				font-size: 0.9rem;
+				transition: all 0.2s ease;
+				border-left: 2px solid transparent;
+			}
+			.toc-nav-list a:hover {
+				background: rgba(0, 195, 255, 0.15);
+				color: #00c3ff;
+				border-left-color: #00c3ff;
+				padding-left: 1.2rem;
+			}
+			.toc-sub-item a {
+				font-size: 0.82rem;
+				padding-left: 1.5rem;
+				color: rgba(255, 255, 255, 0.65);
+			}
+			.toc-sub-item a:hover {
+				padding-left: 1.8rem;
+			}
+
+			/* メニュー背景のオーバーレイ */
+			.toc-overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background: rgba(0, 0, 0, 0.5);
+				z-index: 1000;
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 0.35s ease;
+			}
+			.toc-overlay.open {
+				opacity: 1;
+				pointer-events: auto;
+			}
+
+			@media screen and (max-width: 480px) {
+				.image-gallery-4 {
+					grid-template-columns: 1fr;
+				}
+				.page-nav {
+					flex-direction: column;
+					gap: 0.8rem;
+				}
+				.page-nav .button {
+					width: 100%;
+					text-align: center;
+				}
+				.floating-next-btn {
+					right: 10px;
+					width: 44px;
+					height: 44px;
+					font-size: 1.1rem;
+				}
+				.menu-toggle-btn {
+					top: 15px;
+					right: 15px;
+					width: 54px;
+					height: 54px;
+				}
+				.menu-lines {
+					width: 18px;
+					height: 12px;
+				}
+				.menu-line-2 {
+					top: 8px;
+				}
+				.menu-toggle-btn.is-active .menu-line-1,
+				.menu-toggle-btn.is-active .menu-line-2 {
+					top: 5px;
+				}
+				.menu-text-label {
+					font-size: 0.55rem;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- フローティング右矢印ボタン（クイック次へ） -->
+		<div class="floating-next-btn" id="floatingNextBtn" title="次のコンテンツへ">
+			<i class="fas fa-arrow-right"></i>
+		</div>
+
+		<!-- 右上 丸型MENUボタン（2本線→×アニメーション） -->
+		<button class="menu-toggle-btn" id="menuToggleBtn" type="button" aria-label="Toggle Menu">
+			<div class="menu-lines">
+				<span class="menu-line menu-line-1"></span>
+				<span class="menu-line menu-line-2"></span>
+			</div>
+			<span class="menu-text-label">MENU</span>
+		</button>
+
+		<!-- 目次背景オーバーレイ -->
+		<div class="toc-overlay" id="tocOverlay"></div>
+		
+		<!-- スライドインMENUドロワー -->
+		<div class="toc-drawer" id="tocDrawer">
+			<div class="toc-drawer-header">
+				<h3>MENU</h3>
+			</div>
+			<ul class="toc-nav-list">
+				<li><a href="#profile" class="toc-link">PROFILE（自己紹介）</a></li>
+				<li><a href="#resume" class="toc-link">RESUME（経歴・スキル）</a></li>
+				<li><a href="#works" class="toc-link">WORKS（作品トップ）</a></li>
+				<li class="toc-sub-item"><a href="#work1" class="toc-link">├ 就職作品 (Hair Demo)</a></li>
+				<li class="toc-sub-item"><a href="#team-works" class="toc-link">├ チーム作品一覧 (全10作)</a></li>
+				<li class="toc-sub-item"><a href="#personal-works" class="toc-link">└ 個人作品一覧 (全3作)</a></li>
+				<li><a href="#contact" class="toc-link">CONTACT（連絡先）</a></li>
+			</ul>
+		</div>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header (メイン画面) -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fas fa-code"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>濱田 和哉</h1>
+								<p>
+								ゲームプログラマー / グラフィックスエンジニア志望</p>
+							</div>
+						</div>
+						<!-- メインメニュー -->
+						<nav>
+							<ul>
+								<li><a href="#profile">PROFILE</a></li>
+								<li><a href="#resume">RESUME</a></li>
+								<li><a href="#works">WORKS</a></li>
+								<li><a href="#contact">CONTACT</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main (各モーダルカード) -->
+					<div id="main">
+
+						<!-- 1. PROFILE (自己紹介) -->
+							<article id="profile">
+								<h2 class="major">PROFILE</h2>
+								<!--画像差し替え-->
+								<span class="image main"><img src="images/自画像.jpg" alt="プロフィール画像" /></span>
+								
+								<h3>自己紹介</h3>
+								<p> 日本工学院専門学校蒲田 ゲームクリエイター科四年制の 濱田和哉 です。<br />
+									2028年卒業予定です。<br />
+									リアルタイム描画や物理演算領域に関心があり、現在は特に「髪の毛をリアルに描写・演算すること」を中心としたプログラミングの<br />研究・開発に取り組んでいます。</p>
+
+								<h3>趣味・特技</h3>
+								<ul>
+									<li><b>VTuber・推し活:</b> 主にホロライブ所属（<a href="https://www.youtube.com/@ShirakamiFubuki" target="_blank" rel="noopener noreferrer">白上フブキ</a>推し）のライブ配信視聴（約3年間）</li>
+									<li><b>バスケットボール:</b> 中学・高校で約6年間活動</li>
+								</ul>
+								
+								<h3>技術スキル概要</h3>
+								<ul>
+									<li><b>使用可能言語:</b> C, C++, C#</li>
+									<li><b>開発環境 / エンジン:</b> 自作エンジン (DirectX12), Unity, Unreal Engine</li>
+									<li><b>使用ツール:</b> Git/GitHub, Visual Studio, Blender, Aseprite, GIMP, FireAlpaca</li>
+								</ul>
+
+								<hr />
+								<div class="page-nav">
+									<a href="#header" class="button">← ホーム</a>
+									<a href="#resume" class="button primary">RESUMEを見る →</a>
+								</div>
+							</article>
+
+						<!-- 1-2. RESUME (経歴・スキル詳細) -->
+							<article id="resume">
+								<h2 class="major">RESUME</h2>
+								
+								<div class="resume-section">
+									<h3>SUMMARY / 概要</h3>
+									<p>日本工学院専門学校蒲田 ゲームクリエイター科四年制に在学中のゲームプログラマーです。自作DirectX12エンジンを用いたリアルタイム描画（レイトレーシング、Marschnerヘアモデル）およびStrandHair物理演算、SDF・GJK-EPAを用いた高精度な衝突判定の実装などをしました。</p>
+								</div>
+
+								<div class="resume-section">
+									<h3>EDUCATION / 学歴</h3>
+									<div class="resume-timeline">
+										<div class="resume-item">
+											<div class="resume-date">2012年4月 - 2018年3月</div>
+											<div class="resume-title">武蔵野市立大野田小学校</div>
+										</div>
+										<div class="resume-item">
+											<div class="resume-date">2018年4月 - 2021年3月</div>
+											<div class="resume-title">武蔵野市立第四中学校</div>
+										</div>
+										<div class="resume-item">
+											<div class="resume-date">2021年4月 - 2024年3月</div>
+											<div class="resume-title">都立石神井高等学校</div>
+										</div>
+										<div class="resume-item">
+											<div class="resume-date">2024年4月 - 2028年3月 (卒業予定)</div>
+											<div class="resume-title">日本工学院専門学校蒲田</div>
+											<p>ゲームクリエイター科四年制</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="resume-section">
+									<h3>TECHNICAL SKILLS / 技術スタック</h3>
+									<div class="skill-group">
+										<div class="skill-box">
+											<h4>プログラミング言語</h4>
+											<ul>
+												<li><b>C / C++:</b> メイン言語（自作エンジン・ゲームロジック）</li>
+												<li><b>HLSL:</b> シェーダー開発, RayTracing</li>
+												<li><b>C#:</b> Unity / ツール開発</li>
+											</ul>
+										</div>
+										<div class="skill-box">
+											<h4>グラフィックス & 物理演算</h4>
+											<ul>
+												<li><b>DirectX12:</b> 自作エンジン構築</li>
+												<li><b>描画技術:</b> RayTracing</li>
+												<li><b>物理・判定:</b> Strand Hair, SDF, GJK-EPA</li>
+											</ul>
+										</div>
+										<div class="skill-box">
+											<h4>開発環境 & ツール</h4>
+											<ul>
+												<li><b>開発環境:</b> Visual Studio, Unity, Unreal Engine</li>
+												<li><b>グラフィックツール:</b> Blender, Aseprite, GIMP</li>
+												<li><b>バージョン管理/解析:</b> Git/GitHub, PIX</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div class="resume-section">
+									<h3>PROJECT HIGHLIGHTS / 主要制作実績</h3>
+									<ul>
+										<li><b>【就職作品】 Hair Demo:</b> DirectX12自作エンジンでのStrandHairリアルタイム物理演算＆レイトレーシング描画（個人制作）</li>
+										<li><b>【チーム制作】 全10作品:</b> UIアニメーションエディタ自作、GJK-EPA衝突判定、カメラ制御等（役割: エンジン/UI/物理/プレイヤー）</li>
+										<li><b>【個人制作】 全3作品:</b> 2D謎解きゲーム『エボルシオン』『Mirror』『Mirror 2』</li>
+									</ul>
+								</div>
+
+								<div class="resume-section">
+									<h3>趣味について詳しく</h3>
+									<ul>
+										<li><b>Vtuber:</b> 約3年前に好きになってから今まで見ていない配信はないほど一途です。声や見た目などの癒しとしての要素を持ちつつ、自分が普段触れないエンタメに間接的に触れられたりと気楽に楽しめるコンテンツとしてとても面白いと思っています</li>
+										<li><b>バスケ:</b> 激しい攻守の切り替わりのテンポの良さや大きな声をあげてチーム全体でチームを鼓舞する雰囲気、コミュニケーションによりカバーのしあいなどがとても楽しいです。体力と忍耐力には自身があり、当時1500ｍで4:59を出しました。</li>
+									</ul>
+								</div>
+
+								<hr />
+								<div class="page-nav">
+									<a href="#profile" class="button">← PROFILE</a>
+									<a href="#works" class="button primary">WORKSを見る →</a>
+								</div>
+							</article>
+
+						<!-- 2. WORKS (作品カテゴリー一覧) -->
+							<article id="works">
+								<h2 class="major">WORKS</h2>
+								<p>専門学校で制作した全14作品（就職作品、チーム作品10作、個人作品3作）の一覧です。</p>
+
+								<!-- カテゴリー1: 就職作品 -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#work1\']').click()">
+									<span class="work-tag">個人制作</span><span class="work-tag">DirectX12 (自作エンジン)</span>
+									<h3>就職作品 (Hair Demo)</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline poster="images/pic01.jpg">
+											<source src="videos/work1-demo.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p>DirectX12自作エンジンにて、StrandHairを用いた髪のリアルタイム物理演算とRayTracing/Marschnerモデルによる描画を追求した作品です。</p>
+									<ul class="actions">
+										<li><a href="#work1" class="button primary">詳細を見る</a></li>
+									</ul>
+								</div>
+
+								<!-- カテゴリー2: チーム作品 -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#team-works\']').click()">
+									<span class="work-tag">チーム制作 (全10作品)</span><span class="work-tag">C++ / DirectX12 / 学内エンジン</span>
+									<h3>チーム制作作品一覧 (全10作品)</h3>
+									<p>チームで制作した全10作品です。動画プレビューから各作品の詳細ページへ移動できます。</p>
+									<ul class="actions">
+										<li><a href="#team-works" class="button primary">チーム作品一覧へ (全10作)</a></li>
+									</ul>
+								</div>
+
+								<!-- カテゴリー3: 個人作品 -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#personal-works\']').click()">
+									<span class="work-tag">個人制作 (全3作品)</span><span class="work-tag">開発の原点</span>
+									<h3>個人制作作品 (全3作品)</h3>
+									<p>入学初期から夏休みを利用して個人で制作した作品群です。動画付きで1ページにまとめて掲載しています。</p>
+
+									<ul class="actions">
+										<li><a href="#personal-works" class="button primary">個人作品まとめを見る (全3作)</a></li>
+									</ul>
+								</div>
+
+								<div class="page-nav">
+									<a href="#resume" class="button">← RESUME</a>
+									<!-- 右矢印ボタンをCONTACTへ変更 -->
+									<a href="#contact" class="button primary">CONTACTへ →</a>
+								</div>
+							</article>
+
+						<!-- 2-1. 就職作品 詳細 -->
+							<article id="work1">
+								<h2 class="major">就職作品 詳細</h2>
+								<h3>Hair Demo</h3>
+								<div class="work-video-container">
+									<video autoplay loop muted playsinline controls poster="images/pic01.jpg">
+										<source src="videos/work1-demo.mp4" type="video/mp4">
+									</video>
+								</div>
+								
+								<h4>■ ステータス・開発環境</h4>
+								<ul>
+									<li><b>ジャンル:</b> 3Dアクションゲーム（実装予定）</li>
+									<li><b>開発期間:</b> 3ヶ月（制作中） | <b>人数:</b> 1人 (個人)</li>
+									<li><b>環境・言語:</b> C++ / DirectX12 (自作エンジン)</li>
+								</ul>
+
+								<h4>■ 主な技術的特徴</h4>
+								<ul>
+									<li><b>StrandHair:</b> 一本一本の髪の毛に対する疑似物理演算を採用。</li>
+									<li><b>RayTracing & Marschnerモデル:</b> レイトレーシングに加え髪の光沢表現を再現。</li>
+									<li><b>SDF (Signed Distance Field):</b> 髪の突き抜けを防止する当たり判定の構築。</li>
+								</ul>
+
+								<ul class="actions">
+									<li><a href="https://github.com/Ayusk-onbu/HKGame.git" class="button primary" target="_blank">GitHub</a></li>
+								</ul>
+
+								<!-- ダイレクトナビゲーション -->
+								<div class="page-nav">
+									<a href="#works" class="button">← WORKS一覧</a>
+									<a href="#team-works" class="button primary">チーム作品一覧 →</a>
+								</div>
+							</article>
+
+						<!-- 2-2. TEAM WORKS (チーム作品一覧) -->
+							<article id="team-works">
+								<h2 class="major">TEAM WORKS</h2>
+								<p>カード全体またはボタンをクリックすることで各作品の詳細情報と画像ギャラリーを確認できます。</p>
+
+								<!-- 1. 独りぼっちの友達ごっこ -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#team-work-1\']').click()">
+									<span class="work-tag">2Dパズル</span><span class="work-tag">2年冬 (2ヶ月)</span><span class="work-tag">3人</span>
+									<h3>1. 独りぼっちの友達ごっこ</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline poster="images/team1.jpg">
+											<source src="videos/独りぼっちの作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p>UIアニメーションエディタを自作し、作業効率と表現力を大幅向上させた2Dパズルゲーム。</p>
+									<ul class="actions">
+										<li><a href="#team-work-1" class="button primary">詳細・画像を見る</a></li>
+									</ul>
+								</div>
+
+								<!-- 2. 雨宿り -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#team-work-2\']').click()">
+									<span class="work-tag">2Dアクション</span><span class="work-tag">2年冬 (4ヶ月)</span><span class="work-tag">4人</span>
+									<h3>2. 雨宿り</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline poster="images/team2.jpg">
+											<source src="videos/雨宿り作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p>「GJK-EPA」による精密当たり判定とコヨーテタイムで快適な操作性を追求したアクション。</p>
+									<ul class="actions">
+										<li><a href="#team-work-2" class="button primary">詳細・画像を見る</a></li>
+									</ul>
+								</div>
+
+								<!-- 3. ボインボインボンバー -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#team-work-3\']').click()">
+									<span class="work-tag">3Dアクション</span><span class="work-tag">2年秋 (1ヶ月)</span><span class="work-tag">3人</span>
+									<h3>3. ボインボインボンバー</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline poster="images/team3.jpg">
+											<source src="videos/ボイン作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p>攻撃判定の非対称調整や敵同士のフレンドリーファイアで爽快感と納得感を両立。</p>
+									<ul class="actions">
+										<li><a href="#team-work-3" class="button primary">詳細・画像を見る</a></li>
+									</ul>
+								</div>
+
+								<!-- 4. 跳弾 -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#team-work-4\']').click()">
+									<span class="work-tag">2Dアクション</span><span class="work-tag">2年夏~秋 (1ヶ月)</span><span class="work-tag">3人</span>
+									<h3>4. 跳弾</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline poster="images/team4.jpg">
+											<source src="videos/跳弾作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p>空中静止中の回転動作と判定猶予の綿密な調整で良好なゲームテンポを実現。</p>
+									<ul class="actions">
+										<li><a href="#team-work-4" class="button primary">詳細・画像を見る</a></li>
+									</ul>
+								</div>
+
+								<!-- 5. エゴノワール -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#team-work-5\']').click()">
+									<span class="work-tag">2Dアクション</span><span class="work-tag">2年夏 (10日)</span><span class="work-tag">3人</span>
+									<h3>5. エゴノワール</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline poster="images/team5.jpg">
+											<source src="videos/エゴ作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p>親座標系への組み込みと変換行列計算により、ブロック潜伏・離脱時の滑らかな空間遷移を実現。</p>
+									<ul class="actions">
+										<li><a href="#team-work-5" class="button primary">詳細・画像を見る</a></li>
+									</ul>
+								</div>
+
+								<!-- 6. 影縛りの糸 -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#team-work-6\']').click()">
+									<span class="work-tag">2Dアクション</span><span class="work-tag">1年秋 (1ヶ月)</span><span class="work-tag">3人</span>
+									<h3>6. 影縛りの糸</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline poster="images/team6.jpg">
+											<source src="videos/影作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p>プレイヤーとボスの自働中間カメラ追従制御により、視認性を高く保ち戦況把握をスムーズ化。</p>
+									<ul class="actions">
+										<li><a href="#team-work-6" class="button primary">詳細・画像を見る</a></li>
+									</ul>
+								</div>
+
+								<!-- 7. くるくるレイヤー -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#team-work-7\']').click()">
+									<span class="work-tag">2Dパズル</span><span class="work-tag">1年冬 (2ヶ月)</span><span class="work-tag">3人</span>
+									<h3>7. くるくるレイヤー</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline poster="images/team7.jpg">
+											<source src="videos/くるくるレイヤー紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p>「回転」コンセプトをUI全般やロゴモーション、シームレス遷移にまで昇華させた世界観設計。</p>
+									<ul class="actions">
+										<li><a href="#team-work-7" class="button primary">詳細・画像を見る</a></li>
+									</ul>
+								</div>
+
+								<!-- 8. 1key 当千 -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#team-work-8\']').click()">
+									<span class="work-tag">2Dアクション</span><span class="work-tag">1年冬 (2ヶ月)</span><span class="work-tag">3人</span>
+									<h3>8. 1key 当千</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline poster="images/team8.jpg">
+											<source src="videos/1作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p>移動・攻撃・選択のすべてをSPACEキー1つで完結させた直感的操作システム。</p>
+									<ul class="actions">
+										<li><a href="#team-work-8" class="button primary">詳細・画像を見る</a></li>
+									</ul>
+								</div>
+
+								<!-- 9. スモグリン -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#team-work-9\']').click()">
+									<span class="work-tag">2Dアクション</span><span class="work-tag">1年夏 (10日)</span><span class="work-tag">3人</span>
+									<h3>9. スモグリン</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline poster="images/team9.jpg">
+											<source src="videos/素潜り作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p>実在の潜水艦コックピットを模したUIとテクスチャ書き分けにより高い操縦没入感を演出。</p>
+									<ul class="actions">
+										<li><a href="#team-work-9" class="button primary">詳細・画像を見る</a></li>
+									</ul>
+								</div>
+
+								<!-- 10. ぷにぷろ -->
+								<div class="work-card" onclick="document.querySelector('a[href=\'#team-work-10\']').click()">
+									<span class="work-tag">2Dパズルアクション</span><span class="work-tag">3年夏 (10日)</span><span class="work-tag">3人</span>
+									<h3>10. ぷにぷろ</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline poster="images/team10.jpg">
+											<source src="videos/ぷに作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p>個人制作のUIシステムを新規エンジンへ移植。Jsonによるアニメーション遷移やイベント制御を拡張実装。</p>
+									<ul class="actions">
+										<li><a href="#team-work-10" class="button primary">詳細・画像を見る</a></li>
+									</ul>
+								</div>
+
+								<!-- ダイレクトナビゲーション -->
+								<div class="page-nav">
+									<a href="#work1" class="button">← 就職作品</a>
+									<a href="#works" class="button">WORKS一覧</a>
+									<a href="#personal-works" class="button primary">個人作品一覧 →</a>
+								</div>
+							</article>
+
+						<!-- 2-2-1. チーム作品 詳細 1 -->
+							<article id="team-work-1">
+								<h2 class="major">独りぼっちの友達ごっこ</h2>
+								<div class="work-video-container">
+									<video autoplay loop muted playsinline controls poster="images/team1.jpg">
+										<source src="videos/独りぼっちの作品紹介動画.mp4" type="video/mp4">
+									</video>
+								</div>
+								<h4>■ 開発環境・担当</h4>
+								<ul>
+									<li><b>ジャンル:</b> 2Dパズルゲーム | <b>開発期間:</b> 2ヶ月 (2年冬)</li>
+									<li><b>人数:</b> 3人 | <b>環境:</b> C++ / DirectX12</li>
+									<li><b>担当役割:</b> エンジン、UI</li>
+								</ul>
+								<h4>■ アピールポイント</h4>
+								<p>UIアニメーションエディタを自作し、自由な配置や再帰的な親子付けに対応したシステムを作成しました。これにより、複雑で表現力の高いUIを効率的に実装可能にし、制作工数の削減とUIクオリティの大幅な向上を実現させました。</p>
+								
+								<h4>■ スクリーンショット (4枚)</h4>
+								<div class="image-gallery-4">
+									<div class="gallery-item"><img src="images/team1-1.jpg" alt="スクリーンショット1" /></div>
+									<div class="gallery-item"><img src="images/team1-2.jpg" alt="スクリーンショット2" /></div>
+									<div class="gallery-item"><img src="images/team1-3.jpg" alt="スクリーンショット3" /></div>
+									<div class="gallery-item"><img src="images/team1-4.jpg" alt="スクリーンショット4" /></div>
+								</div>
+
+								<div class="page-nav">
+									<a href="#team-works" class="button">← チーム一覧</a>
+									<a href="#team-work-2" class="button primary">次: 雨宿り →</a>
+								</div>
+							</article>
+
+						<!-- 2-2-2. チーム作品 詳細 2 -->
+							<article id="team-work-2">
+								<h2 class="major">雨宿り</h2>
+								<div class="work-video-container">
+									<video autoplay loop muted playsinline controls poster="images/team2.jpg">
+										<source src="videos/雨宿り作品紹介動画.mp4" type="video/mp4">
+									</video>
+								</div>
+								<h4>■ 開発環境・担当</h4>
+								<ul>
+									<li><b>ジャンル:</b> 2Dアクションゲーム | <b>開発期間:</b> 4ヶ月 (2年冬)</li>
+									<li><b>人数:</b> 4人 | <b>環境:</b> C++ / DirectX12</li>
+									<li><b>担当役割:</b> Player関係の作成、当たり判定</li>
+								</ul>
+								<h4>■ アピールポイント</h4>
+								<p>どんな地形でも動けたほうが楽しいと思い、精密な当たり判定を行える「GJK-EPA」を導入。複雑な地形でも破綻しない判定を構築しました。また、坂を下る際の微小な浮遊による入力の不具合を防ぐため「コヨーテタイム」を実装し、意図通りの手触りを再現しました。</p>
+
+								<h4>■ スクリーンショット (4枚)</h4>
+								<div class="image-gallery-4">
+									<div class="gallery-item"><img src="images/team2-1.jpg" alt="スクリーンショット1" /></div>
+									<div class="gallery-item"><img src="images/team2-2.jpg" alt="スクリーンショット2" /></div>
+									<div class="gallery-item"><img src="images/team2-3.jpg" alt="スクリーンショット3" /></div>
+									<div class="gallery-item"><img src="images/team2-4.jpg" alt="スクリーンショット4" /></div>
+								</div>
+
+								<div class="page-nav">
+									<a href="#team-work-1" class="button">← 前: 独りぼっち</a>
+									<a href="#team-works" class="button">チーム一覧</a>
+									<a href="#team-work-3" class="button primary">次: ボインボイン →</a>
+								</div>
+							</article>
+
+						<!-- 2-2-3. チーム作品 詳細 3 -->
+							<article id="team-work-3">
+								<h2 class="major">ボインボインボンバー</h2>
+								<div class="work-video-container">
+									<video autoplay loop muted playsinline controls poster="images/team3.jpg">
+										<source src="videos/ボイン作品紹介動画.mp4" type="video/mp4">
+									</video>
+								</div>
+								<h4>■ 開発環境・担当</h4>
+								<ul>
+									<li><b>ジャンル:</b> 3Dアクションゲーム | <b>開発期間:</b> 1ヶ月 (2年秋)</li>
+									<li><b>人数:</b> 3人 | <b>環境:</b> C++ / DirectX12</li>
+									<li><b>担当役割:</b> プレイヤー、雑魚敵</li>
+								</ul>
+								<h4>■ アピールポイント</h4>
+								<p>プレイヤーの近接攻撃は見た目より判定を広く、敵の攻撃は狭く調整することで理不尽な被弾感をなくしました。また、敵の攻撃が他の敵にも命中する設計にすることで、説得力と違和感のないアクションを実現しました。</p>
+
+								<h4>■ スクリーンショット (4枚)</h4>
+								<div class="image-gallery-4">
+									<div class="gallery-item"><img src="images/team3-1.jpg" alt="スクリーンショット1" /></div>
+									<div class="gallery-item"><img src="images/team3-2.jpg" alt="スクリーンショット2" /></div>
+									<div class="gallery-item"><img src="images/team3-3.jpg" alt="スクリーンショット3" /></div>
+									<div class="gallery-item"><img src="images/team3-4.jpg" alt="スクリーンショット4" /></div>
+								</div>
+
+								<div class="page-nav">
+									<a href="#team-work-2" class="button">← 前: 雨宿り</a>
+									<a href="#team-works" class="button">チーム一覧</a>
+									<a href="#team-work-4" class="button primary">次: 跳弾 →</a>
+								</div>
+							</article>
+
+						<!-- 2-2-4. チーム作品 詳細 4 -->
+							<article id="team-work-4">
+								<h2 class="major">跳弾</h2>
+								<div class="work-video-container">
+									<video autoplay loop muted playsinline controls poster="images/team4.jpg">
+										<source src="videos/跳弾作品紹介動画.mp4" type="video/mp4">
+									</video>
+								</div>
+								<h4>■ 開発環境・担当</h4>
+								<ul>
+									<li><b>ジャンル:</b> 2Dアクションゲーム | <b>開発期間:</b> 1ヶ月 (2年夏~秋)</li>
+									<li><b>人数:</b> 3人 | <b>環境:</b> C++ / DirectX12</li>
+									<li><b>担当役割:</b> エンジン、操作性の調整</li>
+								</ul>
+								<h4>■ アピールポイント</h4>
+								<p>空中静止中の回転動作は「1周半」の猶予を持たせることで余計な連続入力を不要にし、誰でも狙えるがテンポを損なわない絶妙な速度に調整。ゲーム全体の心地よいフローを追求しました。</p>
+
+								<h4>■ スクリーンショット (4枚)</h4>
+								<div class="image-gallery-4">
+									<div class="gallery-item"><img src="images/team4-1.jpg" alt="スクリーンショット1" /></div>
+									<div class="gallery-item"><img src="images/team4-2.jpg" alt="スクリーンショット2" /></div>
+									<div class="gallery-item"><img src="images/team4-3.jpg" alt="スクリーンショット3" /></div>
+									<div class="gallery-item"><img src="images/team4-4.jpg" alt="スクリーンショット4" /></div>
+								</div>
+
+								<div class="page-nav">
+									<a href="#team-work-3" class="button">← 前: ボインボイン</a>
+									<a href="#team-works" class="button">チーム一覧</a>
+									<a href="#team-work-5" class="button primary">次: エゴノワール →</a>
+								</div>
+							</article>
+
+						<!-- 2-2-5. チーム作品 詳細 5 -->
+							<article id="team-work-5">
+								<h2 class="major">エゴノワール</h2>
+								<div class="work-video-container">
+									<video autoplay loop muted playsinline controls poster="images/team5.jpg">
+										<source src="videos/エゴ作品紹介動画.mp4" type="video/mp4">
+									</video>
+								</div>
+								<h4>■ 開発環境・担当</h4>
+								<ul>
+									<li><b>ジャンル:</b> 2Dアクションゲーム | <b>開発期間:</b> 10日 (2年夏)</li>
+									<li><b>人数:</b> 3人 | <b>環境:</b> C++ / DirectX12</li>
+									<li><b>担当役割:</b> 敵のModel、Playerの挙動</li>
+								</ul>
+								<h4>■ アピールポイント</h4>
+								<p>潜伏時にはキャラクターをブロックの親座標系へ組み込み、離脱時には変換行列から正確なワールド座標を算出・引き継ぐ処理を構築。親子関係の着脱時にも位置飛びを起こさずスムーズな空間遷移を実現しました。</p>
+
+								<h4>■ スクリーンショット (4枚)</h4>
+								<div class="image-gallery-4">
+									<div class="gallery-item"><img src="images/team5-1.jpg" alt="スクリーンショット1" /></div>
+									<div class="gallery-item"><img src="images/team5-2.jpg" alt="スクリーンショット2" /></div>
+									<div class="gallery-item"><img src="images/team5-3.jpg" alt="スクリーンショット3" /></div>
+									<div class="gallery-item"><img src="images/team5-4.jpg" alt="スクリーンショット4" /></div>
+								</div>
+
+								<div class="page-nav">
+									<a href="#team-work-4" class="button">← 前: 跳弾</a>
+									<a href="#team-works" class="button">チーム一覧</a>
+									<a href="#team-work-6" class="button primary">次: 影縛りの糸 →</a>
+								</div>
+							</article>
+
+						<!-- 2-2-6. チーム作品 詳細 6 -->
+							<article id="team-work-6">
+								<h2 class="major">影縛りの糸</h2>
+								<div class="work-video-container">
+									<video autoplay loop muted playsinline controls poster="images/team6.jpg">
+										<source src="videos/影作品紹介動画.mp4" type="video/mp4">
+									</video>
+								</div>
+								<h4>■ 開発環境・担当</h4>
+								<ul>
+									<li><b>ジャンル:</b> 2Dアクションゲーム | <b>開発期間:</b> 1ヶ月 (1年秋)</li>
+									<li><b>人数:</b> 3人 | <b>環境:</b> C++ / 学内製エンジン</li>
+									<li><b>担当役割:</b> カメラ、紐、演出</li>
+								</ul>
+								<h4>■ アピールポイント</h4>
+								<p>画面外からの被弾による不快感をなくすため、プレイヤーとボスの双方が常にフレーム内に収まるよう注視点を中間地点ヘリアルタイム追従させる制御を実装。戦況を把握できる高い視認性を確保しました。</p>
+
+								<h4>■ スクリーンショット (4枚)</h4>
+								<div class="image-gallery-4">
+									<div class="gallery-item"><img src="images/team6-1.jpg" alt="スクリーンショット1" /></div>
+									<div class="gallery-item"><img src="images/team6-2.jpg" alt="スクリーンショット2" /></div>
+									<div class="gallery-item"><img src="images/team6-3.jpg" alt="スクリーンショット3" /></div>
+									<div class="gallery-item"><img src="images/team6-4.jpg" alt="スクリーンショット4" /></div>
+								</div>
+
+								<div class="page-nav">
+									<a href="#team-work-5" class="button">← 前: エゴノワール</a>
+									<a href="#team-works" class="button">チーム一覧</a>
+									<a href="#team-work-7" class="button primary">次: くるくるレイヤー →</a>
+								</div>
+							</article>
+
+						<!-- 2-2-7. チーム作品 詳細 7 -->
+							<article id="team-work-7">
+								<h2 class="major">くるくるレイヤー</h2>
+								<div class="work-video-container">
+									<video autoplay loop muted playsinline controls poster="images/team7.jpg">
+										<source src="videos/くるくるレイヤー紹介動画.mp4" type="video/mp4">
+									</video>
+								</div>
+								<h4>■ 開発環境・担当</h4>
+								<ul>
+									<li><b>ジャンル:</b> 2Dパズルゲーム | <b>開発期間:</b> 2ヶ月 (1年冬)</li>
+									<li><b>人数:</b> 3人 | <b>環境:</b> C++ / 学内製エンジン</li>
+									<li><b>担当役割:</b> タイトル、セレクト画面</li>
+								</ul>
+								<h4>■ アピールポイント</h4>
+								<p>「回転」というコンセプトをUI挙動やロゴモーションにも反映させ、タイトルからシームレスにゲームへ繋げる設計により、起動した瞬間からの没入感と視認性を高めました。</p>
+
+								<h4>■ スクリーンショット (4枚)</h4>
+								<div class="image-gallery-4">
+									<div class="gallery-item"><img src="images/team7-1.jpg" alt="スクリーンショット1" /></div>
+									<div class="gallery-item"><img src="images/team7-2.jpg" alt="スクリーンショット2" /></div>
+									<div class="gallery-item"><img src="images/team7-3.jpg" alt="スクリーンショット3" /></div>
+									<div class="gallery-item"><img src="images/team7-4.jpg" alt="スクリーンショット4" /></div>
+								</div>
+
+								<div class="page-nav">
+									<a href="#team-work-6" class="button">← 前: 影縛りの糸</a>
+									<a href="#team-works" class="button">チーム一覧</a>
+									<a href="#team-work-8" class="button primary">次: 1key 当千 →</a>
+								</div>
+							</article>
+
+						<!-- 2-2-8. チーム作品 詳細 8 -->
+							<article id="team-work-8">
+								<h2 class="major">1key 当千</h2>
+								<div class="work-video-container">
+									<video autoplay loop muted playsinline controls poster="images/team8.jpg">
+										<source src="videos/1作品紹介動画.mp4" type="video/mp4">
+									</video>
+								</div>
+								<h4>■ 開発環境・担当</h4>
+								<ul>
+									<li><b>ジャンル:</b> 2Dアクションゲーム | <b>開発期間:</b> 2ヶ月 (1年冬)</li>
+									<li><b>人数:</b> 3人 | <b>環境:</b> C++ / 学内製エンジン</li>
+									<li><b>担当役割:</b> Texture、システム考案</li>
+								</ul>
+								<h4>■ アピールポイント</h4>
+								<p>誰でも直感的に楽しめるよう、移動・攻撃・エリア選択などの主要アクションすべてを「SPACEキー1つ」で完結できるようシステムを設計・調整しました。</p>
+
+								<h4>■ スクリーンショット (4枚)</h4>
+								<div class="image-gallery-4">
+									<div class="gallery-item"><img src="images/team8-1.jpg" alt="スクリーンショット1" /></div>
+									<div class="gallery-item"><img src="images/team8-2.jpg" alt="スクリーンショット2" /></div>
+									<div class="gallery-item"><img src="images/team8-3.jpg" alt="スクリーンショット3" /></div>
+									<div class="gallery-item"><img src="images/team8-4.jpg" alt="スクリーンショット4" /></div>
+								</div>
+
+								<div class="page-nav">
+									<a href="#team-work-7" class="button">← 前: くるくるレイヤー</a>
+									<a href="#team-works" class="button">チーム一覧</a>
+									<a href="#team-work-9" class="button primary">次: スモグリン →</a>
+								</div>
+							</article>
+
+						<!-- 2-2-9. チーム作品 詳細 9 -->
+							<article id="team-work-9">
+								<h2 class="major">スモグリン</h2>
+								<div class="work-video-container">
+									<video autoplay loop muted playsinline controls poster="images/team9.jpg">
+										<source src="videos/素潜り作品紹介動画.mp4" type="video/mp4">
+									</video>
+								</div>
+								<h4>■ 開発環境・担当</h4>
+								<ul>
+									<li><b>ジャンル:</b> 2Dアクションゲーム | <b>開発期間:</b> 10日 (1年夏)</li>
+									<li><b>人数:</b> 3人 | <b>環境:</b> C++ / 学内製エンジン</li>
+									<li><b>担当役割:</b> Texture作成、Title、メニュー画面、クリア画面</li>
+								</ul>
+								<h4>■ アピールポイント</h4>
+								<p>実在する潜水艦の操縦席を参考にテクスチャを書き分け、メニュー画面では「潜水艦内部」をイメージしたUIデザインを構築して操縦の没入感を向上させました。</p>
+
+								<h4>■ スクリーンショット (4枚)</h4>
+								<div class="image-gallery-4">
+									<div class="gallery-item"><img src="images/team9-1.jpg" alt="スクリーンショット1" /></div>
+									<div class="gallery-item"><img src="images/team9-2.jpg" alt="スクリーンショット2" /></div>
+									<div class="gallery-item"><img src="images/team9-3.jpg" alt="スクリーンショット3" /></div>
+									<div class="gallery-item"><img src="images/team9-4.jpg" alt="スクリーンショット4" /></div>
+								</div>
+
+								<div class="page-nav">
+									<a href="#team-work-8" class="button">← 前: 1key 当千</a>
+									<a href="#team-works" class="button">チーム一覧</a>
+									<a href="#team-work-10" class="button primary">次: ぷにぷろ →</a>
+								</div>
+							</article>
+
+						<!-- 2-2-10. チーム作品 詳細 10 -->
+							<article id="team-work-10">
+								<h2 class="major">ぷにぷろ</h2>
+								<div class="work-video-container">
+									<video autoplay loop muted playsinline controls poster="images/team10.jpg">
+										<source src="videos/ぷに作品紹介動画.mp4" type="video/mp4">
+									</video>
+								</div>
+								<h4>■ 開発環境・担当</h4>
+								<ul>
+									<li><b>ジャンル:</b> 2Dパズルアクションゲーム | <b>開発期間:</b> 10日 (3年夏)</li>
+									<li><b>人数:</b> 3人 | <b>環境:</b> C++ / DirectX12</li>
+									<li><b>担当役割:</b> UIの作成（システムの移植・アニメーション機能拡張）</li>
+								</ul>
+								<h4>■ アピールポイント</h4>
+								<p>個人で制作していたUIシステムを今回の開発エンジンへと移植・適用してUIを構築。さらに、In/Out/Stayの状態遷移時に再生するアニメーションをJsonファイル内で柔軟に選択できる仕組みへと改良しました。あわせて出現タイミングに合わせたEventの発火選択機能も構築し、UI開発の拡張性と表現精度を高めました。</p>
+
+								<h4>■ スクリーンショット (4枚)</h4>
+								<div class="image-gallery-4">
+									<div class="gallery-item"><img src="images/team10-1.jpg" alt="スクリーンショット1" /></div>
+									<div class="gallery-item"><img src="images/team10-2.jpg" alt="スクリーンショット2" /></div>
+									<div class="gallery-item"><img src="images/team10-3.jpg" alt="スクリーンショット3" /></div>
+									<div class="gallery-item"><img src="images/team10-4.jpg" alt="スクリーンショット4" /></div>
+								</div>
+
+								<div class="page-nav">
+									<a href="#team-work-9" class="button">← 前: スモグリン</a>
+									<a href="#team-works" class="button">チーム一覧</a>
+									<a href="#personal-works" class="button primary">個人作品一覧 →</a>
+								</div>
+							</article>
+
+						<!-- 2-3. PERSONAL WORKS (個人作品全3作品まとめ) -->
+							<article id="personal-works">
+								<h2 class="major">PERSONAL WORKS</h2>
+								<p>個人で制作した初期・夏休み作品（全3作品）です。各作品にデモ動画を配置しています。</p>
+
+								<!-- 個人1: エボルシオン -->
+								<div class="work-card">
+									<span class="work-tag">2D謎解き</span><span class="work-tag">1年夏 (1ヶ月)</span><span class="work-tag">個人制作</span>
+									<h3>エボルシオン</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline controls poster="images/personal1.jpg">
+											<source src="videos/エボルシオン作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p><b>環境:</b> C++ / 学内製エンジン<br />
+									<b>概要:</b> 専門学校に入学して初めて個人で制作した2D謎解きゲーム作品です。操作方法などの遊ぶ人への思いやりを知るいい機会になりました。</p>
+								</div>
+
+								<!-- 個人2: Mirror -->
+								<div class="work-card">
+									<span class="work-tag">2D謎解き</span><span class="work-tag">1年夏休み (1ヶ月)</span><span class="work-tag">個人制作</span>
+									<h3>Mirror</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline controls poster="images/personal2.jpg">
+											<source src="videos/Mirror作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p><b>環境:</b> C++ / 学内製エンジン<br />
+									<b>概要:</b> Textureに力を入れすぎて失敗したいい経験です。</p>
+								</div>
+
+								<!-- 個人3: Mirror 2 -->
+								<div class="work-card">
+									<span class="work-tag">2D謎解き</span><span class="work-tag">2年夏休み (1ヶ月)</span><span class="work-tag">個人制作</span>
+									<h3>Mirror 2</h3>
+									<div class="work-video-container">
+										<video autoplay loop muted playsinline controls poster="images/personal3.jpg">
+											<source src="videos/Mirror2作品紹介動画.mp4" type="video/mp4">
+										</video>
+									</div>
+									<p><b>環境:</b> C++ / DirectX12<br />
+									<b>概要:</b> 初めての自作DirectX12環境でのゲーム作成でした。当時は理解度が足らず苦手意識をもってしまったため恥ずかしい出来になってしまいました。現在では楽しく作成できています。</p>
+								</div>
+
+								<!-- ダイレクトナビゲーション -->
+								<div class="page-nav">
+									<a href="#team-works" class="button">← チーム作品一覧</a>
+									<a href="#works" class="button primary">WORKSトップへ →</a>
+								</div>
+							</article>
+
+						<!-- 3. CONTACT (連絡先) -->
+							<article id="contact">
+								<h2 class="major">CONTACT</h2>
+								<p>なにかご用件ございましたら、以下の連絡先からお気軽にご連絡ください。</p>
+								
+								<ul>
+									<li><b>所属:</b> 日本工学院専門学校蒲田 ゲームクリエイター科四年制</li>
+									<li><b>mail:</b> k024g0103@g.neec.ac.jp</li>
+								</ul>
+
+								<ul class="icons">
+									<li><a href="https://github.com/Ayusk-onbu" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+								</ul>
+
+								<div class="page-nav">
+									<a href="#works" class="button">← WORKS</a>
+									<a href="#profile" class="button primary">PROFILEへ →</a>
+								</div>
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Kazuya Hamada. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Background Image -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+		<!-- ナビゲーションバグ解消＆MENUボタン制御スクリプト -->
+		<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			
+			// ダイレクトページ移動処理関数（トップに戻る挙動を完全回避）
+			function goToSection(targetHref) {
+				if (!targetHref) return;
+
+				// #header または # の場合はトップ（メイン画面）に戻る
+				if (targetHref === '#header' || targetHref === '#' || targetHref === '') {
+					if (window.jQuery && window.jQuery('#main')[0] && window.jQuery('#main')[0]._hide) {
+						window.jQuery('#main')[0]._hide();
+					} else {
+						window.location.hash = '';
+					}
+					return;
+				}
+
+				const targetId = targetHref.replace('#', '');
+				const targetArticle = document.getElementById(targetId);
+				if (!targetArticle) return;
+
+				// 現在のハッシュと違う場合はハッシュを書き換えてDimensionのhashchangeを駆動させる
+				if (window.location.hash !== targetHref) {
+					window.location.hash = targetHref;
+				} else {
+					// 既に同じページにいる場合は強制再描画
+					if (window.jQuery) {
+						const $main = window.jQuery('#main');
+						if ($main && typeof $main._show === 'function') {
+							$main._show(targetId);
+						}
+					}
+				}
+			}
+
+			// --- 1. クイック「次へ」矢印ボタンの制御 ---
+			const floatingNextBtn = document.getElementById('floatingNextBtn');
+			if (floatingNextBtn) {
+				floatingNextBtn.addEventListener('click', function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+
+					this.classList.add('clicked');
+					setTimeout(() => this.classList.remove('clicked'), 300);
+
+					const activeArticle = document.querySelector('article.active') || document.querySelector('article:target');
+					if (activeArticle) {
+						const nextLink = activeArticle.querySelector('.page-nav a.primary');
+						if (nextLink) {
+							goToSection(nextLink.getAttribute('href'));
+						} else {
+							goToSection('#works');
+						}
+					} else {
+						goToSection('#profile');
+					}
+				});
+			}
+
+			// --- 2. 右上 丸型MENUボタン & ドロワー制御 ---
+			const menuToggleBtn = document.getElementById('menuToggleBtn');
+			const tocDrawer = document.getElementById('tocDrawer');
+			const tocOverlay = document.getElementById('tocOverlay');
+			const tocLinks = document.querySelectorAll('.toc-link');
+
+			function toggleMenu(e) {
+				if(e) { e.preventDefault(); e.stopPropagation(); }
+				const isOpen = tocDrawer.classList.contains('open');
+				if (isOpen) {
+					closeMenu();
+				} else {
+					openMenu();
+				}
+			}
+
+			function openMenu() {
+				tocDrawer.classList.add('open');
+				tocOverlay.classList.add('open');
+				if (menuToggleBtn) menuToggleBtn.classList.add('is-active');
+			}
+
+			function closeMenu() {
+				tocDrawer.classList.remove('open');
+				tocOverlay.classList.remove('open');
+				if (menuToggleBtn) menuToggleBtn.classList.remove('is-active');
+			}
+
+			if (menuToggleBtn) menuToggleBtn.addEventListener('click', toggleMenu);
+			if (tocOverlay) tocOverlay.addEventListener('click', closeMenu);
+
+			// メニュー内リンク選択時の移動処理
+			tocLinks.forEach(link => {
+				link.addEventListener('click', function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					const targetHref = this.getAttribute('href');
+					closeMenu();
+					goToSection(targetHref);
+				});
+			});
+
+			// ページ内のすべての `#` リンク（ヘッダーメニュー、ボタン等）を直接切り替えに統一
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function(e) {
+					const href = this.getAttribute('href');
+					if (href && href.startsWith('#') && !this.classList.contains('toc-link')) {
+						e.preventDefault();
+						e.stopPropagation();
+						goToSection(href);
+					}
+				});
+			});
+		});
+		</script>
+
+		<!-- 青×ゴールド プレミアム無限横スクロール背景 -->
+		<script>
+		(function() {
+		    const oldCanvas = document.getElementById('cyber-bg-canvas');
+		    if(oldCanvas) oldCanvas.remove();
+
+		    const canvas = document.createElement('canvas');
+		    canvas.id = 'cyber-bg-canvas';
+		    canvas.style.position = 'fixed';
+		    canvas.style.top = '0';
+		    canvas.style.left = '0';
+		    canvas.style.width = '100vw';
+		    canvas.style.height = '100vh';
+		    canvas.style.zIndex = '1';
+		    canvas.style.pointerEvents = 'none';
+		    
+		    document.body.appendChild(canvas);
+		    
+		    const ctx = canvas.getContext('2d');
+		    let width, height;
+		    let particles = [];
+		    let time = 0;
+		    let scrollX = 0;
+		    
+		    let mouse = { x: null, y: null, radius: 280 };
+		    window.addEventListener('mousemove', function(e) {
+		        mouse.x = e.clientX;
+		        mouse.y = e.clientY;
+		    });
+
+		    function resize() {
+		        width = canvas.width = window.innerWidth;
+		        height = canvas.height = window.innerHeight;
+		    }
+		    window.addEventListener('resize', resize);
+		    resize();
+		    
+		    const particleCount = 85;
+		    const colors = ['#0066ff', '#00c3ff', '#ffd700', '#ffea75', '#4169e1'];
+
+		    for(let i=0; i<particleCount; i++) {
+		        particles.push({
+		            x: Math.random() * width,
+		            y: Math.random() * height,
+		            vx: (Math.random() - 0.7) * 1.5,
+		            vy: (Math.random() - 0.5) * 0.8,
+		            radius: Math.random() * 2.5 + 1.2,
+		            color: colors[Math.floor(Math.random() * colors.length)],
+		            pulse: Math.random() * Math.PI
+		        });
+		    }
+
+		    function drawPentagram(cx, cy, baseRadius, t) {
+		        const r = baseRadius;
+		        ctx.save();
+		        ctx.translate(cx, cy + Math.sin(t * 0.8) * 15);
+		        ctx.rotate(Math.sin(t * 0.3) * 0.12);
+		        
+		        const points = [];
+		        for (let i = 0; i < 5; i++) {
+		            const angle = -Math.PI / 2 + (i * 4 * Math.PI) / 5;
+		            points.push({ x: r * Math.cos(angle), y: r * Math.sin(angle) });
+		        }
+
+		        ctx.shadowBlur = 15;
+		        ctx.shadowColor = '#ffd700';
+		        ctx.strokeStyle = '#ffd700';
+		        ctx.lineWidth = 1.8;
+		        ctx.globalAlpha = 0.65;
+
+		        ctx.beginPath();
+		        for (let i = 0; i < 5; i++) {
+		            const angle = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+		            const px = r * Math.cos(angle);
+		            const py = r * Math.sin(angle);
+		            if(i === 0) ctx.moveTo(px, py);
+		            else ctx.lineTo(px, py);
+		        }
+		        ctx.closePath();
+		        ctx.stroke();
+
+		        ctx.shadowBlur = 22;
+		        ctx.shadowColor = '#00a2ff';
+		        ctx.strokeStyle = '#00a2ff';
+		        ctx.lineWidth = 2.8;
+		        ctx.globalAlpha = 0.9;
+
+		        ctx.beginPath();
+		        ctx.moveTo(points[0].x, points[0].y);
+		        for (let i = 1; i <= 5; i++) {
+		            ctx.lineTo(points[i % 5].x, points[i % 5].y);
+		        }
+		        ctx.stroke();
+
+		        ctx.shadowColor = '#ffe066';
+		        ctx.fillStyle = '#fff4b8';
+		        for (let i = 0; i < 5; i++) {
+		            ctx.beginPath();
+		            ctx.arc(points[i].x, points[i].y, 6.5, 0, Math.PI * 2);
+		            ctx.fill();
+		        }
+		        ctx.restore();
+		    }
+
+		    function drawCorn(cx, cy, s, t) {
+		        ctx.save();
+		        ctx.translate(cx, cy + Math.cos(t * 0.9) * 18);
+		        ctx.rotate(-0.2 + Math.sin(t * 0.4) * 0.08);
+
+		        const cornNodes = [
+		            {x: 0, y: -130}, {x: -50, y: -65}, {x: 50, y: -65},
+		            {x: -55, y: 35},  {x: 55, y: 35},   {x: 0, y: 90}, {x: 0, y: -20}
+		        ];
+		        const huskNodes = [
+		            {x: -100, y: 25}, {x: 100, y: 25}, {x: 0, y: 145}
+		        ];
+
+		        ctx.shadowBlur = 20;
+		        ctx.shadowColor = '#0077ff';
+		        ctx.strokeStyle = '#0077ff';
+		        ctx.lineWidth = 3.0;
+		        ctx.globalAlpha = 0.85;
+
+		        ctx.beginPath();
+		        ctx.moveTo(cornNodes[5].x * s, cornNodes[5].y * s);
+		        ctx.lineTo(huskNodes[0].x * s, huskNodes[0].y * s);
+		        ctx.lineTo(cornNodes[3].x * s, cornNodes[3].y * s);
+
+		        ctx.moveTo(cornNodes[5].x * s, cornNodes[5].y * s);
+		        ctx.lineTo(huskNodes[1].x * s, huskNodes[1].y * s);
+		        ctx.lineTo(cornNodes[4].x * s, cornNodes[4].y * s);
+
+		        ctx.moveTo(cornNodes[5].x * s, cornNodes[5].y * s);
+		        ctx.lineTo(huskNodes[2].x * s, huskNodes[2].y * s);
+		        ctx.stroke();
+
+		        ctx.shadowColor = '#ffd700';
+		        ctx.strokeStyle = '#ffdf00';
+		        ctx.lineWidth = 2.4;
+		        ctx.globalAlpha = 0.95;
+
+		        const connections = [
+		            [0,1],[0,2],[1,3],[2,4],[3,5],[4,5],
+		            [0,6],[6,5],[1,6],[2,6],[3,6],[4,6],[1,2],[3,4]
+		        ];
+
+		        ctx.beginPath();
+		        for (let c of connections) {
+		            ctx.moveTo(cornNodes[c[0]].x * s, cornNodes[c[0]].y * s);
+		            ctx.lineTo(cornNodes[c[1]].x * s, cornNodes[c[1]].y * s);
+		        }
+		        ctx.stroke();
+
+		        ctx.fillStyle = '#ffffff';
+		        for (let n of cornNodes) {
+		            ctx.beginPath();
+		            ctx.arc(n.x * s, n.y * s, 5.5, 0, Math.PI * 2);
+		            ctx.fill();
+		        }
+		        ctx.restore();
+		    }
+
+		    function drawFox(cx, cy, s, t) {
+		        ctx.save();
+		        ctx.translate(cx, cy + Math.sin(t * 0.7) * 18);
+		        
+		        const foxNodes = [
+		            {x: 0, y: 80},     {x: -90, y: -10}, {x: 90, y: -10},
+		            {x: 0, y: -35},    {x: -115, y: -125}, {x: -35, y: -55},
+		            {x: 115, y: -125}, {x: 35, y: -55},  {x: 0, y: -90}
+		        ];
+
+		        const blueLines = [
+		            [1,4],[4,5],[5,8],[8,7],[7,6],[6,2],
+		            [3,1],[3,2],[3,5],[3,7],[3,8]
+		        ];
+		        const goldLines = [
+		            [0,1],[2,0],[0,3],[5,4],[7,6]
+		        ];
+
+		        ctx.shadowBlur = 20;
+		        ctx.shadowColor = '#00d2ff';
+		        ctx.strokeStyle = '#00a2ff';
+		        ctx.lineWidth = 2.4;
+		        ctx.globalAlpha = 0.85;
+		        
+		        ctx.beginPath();
+		        for (let c of blueLines) {
+		            ctx.moveTo(foxNodes[c[0]].x * s, foxNodes[c[0]].y * s);
+		            ctx.lineTo(foxNodes[c[1]].x * s, foxNodes[c[1]].y * s);
+		        }
+		        ctx.stroke();
+
+		        ctx.shadowColor = '#ffd700';
+		        ctx.strokeStyle = '#ffdf00';
+		        ctx.lineWidth = 2.6;
+		        ctx.globalAlpha = 0.95;
+
+		        ctx.beginPath();
+		        for (let c of goldLines) {
+		            ctx.moveTo(foxNodes[c[0]].x * s, foxNodes[c[0]].y * s);
+		            ctx.lineTo(foxNodes[c[1]].x * s, foxNodes[c[1]].y * s);
+		        }
+		        ctx.stroke();
+
+		        for (let i = 0; i < foxNodes.length; i++) {
+		            const fn = foxNodes[i];
+		            const isGold = (i === 0 || i === 4 || i === 6 || i === 3);
+		            ctx.fillStyle = isGold ? '#ffe066' : '#00f0ff';
+		            ctx.shadowColor = ctx.fillStyle;
+		            ctx.beginPath();
+		            ctx.arc(fn.x * s, fn.y * s, isGold ? 6 : 4, 0, Math.PI * 2);
+		            ctx.fill();
+		        }
+
+		        ctx.restore();
+		    }
+
+		    function getScrollPos(baseOffsetX, totalLoopWidth) {
+		        let currentX = (baseOffsetX - scrollX) % totalLoopWidth;
+		        if (currentX < -600) {
+		            currentX += totalLoopWidth;
+		        }
+		        return currentX;
+		    }
+
+		    function draw() {
+		        ctx.clearRect(0, 0, width, height);
+		        time += 0.02;
+		        scrollX += 1.2;
+
+		        for(let i=0; i<particleCount; i++) {
+		            let p = particles[i];
+		            p.x += p.vx;
+		            p.y += p.vy;
+		            
+		            if(p.x < -20) p.x = width + 20;
+		            if(p.x > width + 20) p.x = -20;
+		            if(p.y < 0 || p.y > height) p.vy *= -1;
+
+		            p.pulse += 0.03;
+		            let alpha = 0.5 + Math.sin(p.pulse) * 0.4;
+		            
+		            ctx.shadowBlur = 10;
+		            ctx.shadowColor = p.color;
+		            
+		            ctx.beginPath();
+		            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+		            ctx.fillStyle = p.color;
+		            ctx.globalAlpha = alpha;
+		            ctx.fill();
+		            
+		            for(let j=i+1; j<particleCount; j++) {
+		                let p2 = particles[j];
+		                let dx = p.x - p2.x;
+		                let dy = p.y - p2.y;
+		                let dist = Math.sqrt(dx*dx + dy*dy);
+		                
+		                if(dist < 130) {
+		                    ctx.beginPath();
+		                    ctx.moveTo(p.x, p.y);
+		                    ctx.lineTo(p2.x, p2.y);
+		                    ctx.strokeStyle = '#00a2ff';
+		                    ctx.lineWidth = 1.0 * (1 - dist / 130);
+		                    ctx.globalAlpha = (1 - dist / 130) * 0.4;
+		                    ctx.stroke();
+		                }
+		            }
+
+		            if(mouse.x !== null && mouse.y !== null) {
+		                let mdx = p.x - mouse.x;
+		                let mdy = p.y - mouse.y;
+		                let mdist = Math.sqrt(mdx*mdx + mdy*mdy);
+		                if(mdist < mouse.radius) {
+		                    ctx.beginPath();
+		                    ctx.moveTo(p.x, p.y);
+		                    ctx.lineTo(mouse.x, mouse.y);
+		                    ctx.strokeStyle = '#ffd700';
+		                    ctx.lineWidth = 1.5 * (1 - mdist / mouse.radius);
+		                    ctx.globalAlpha = (1 - mdist / mouse.radius) * 0.8;
+		                    ctx.stroke();
+		                }
+		            }
+		        }
+
+		        const baseDimension = Math.max(width, height);
+		        const pentagramRadius = baseDimension * 0.25;
+		        const iconScale = baseDimension * 0.0028;
+
+		        const totalLoopWidth = Math.max(width * 2.2, 2800);
+
+		        const posPentagram = getScrollPos(width * 0.3, totalLoopWidth);
+		        const posCorn      = getScrollPos(width * 1.1, totalLoopWidth);
+		        const posFox       = getScrollPos(width * 1.9, totalLoopWidth);
+
+		        drawPentagram(posPentagram, height * 0.35, pentagramRadius, time);
+		        drawCorn(posCorn, height * 0.50, iconScale, time);
+		        drawFox(posFox, height * 0.65, iconScale, time);
+
+		        ctx.shadowBlur = 0;
+		        requestAnimationFrame(draw);
+		    }
+		    draw();
+		})();
+		</script>
+
+	</body>
+</html>
